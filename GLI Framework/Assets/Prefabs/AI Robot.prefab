@@ -744,6 +744,7 @@ GameObject:
   - component: {fileID: 6141492080429249751}
   - component: {fileID: 9090070202351780585}
   - component: {fileID: 1991194041286600}
+  - component: {fileID: 3149350276311072983}
   m_Layer: 0
   m_Name: AI Robot
   m_TagString: Untagged
@@ -824,6 +825,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AiAgent>k__BackingField: {fileID: 9090070202351780585}
+--- !u!114 &3149350276311072983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141492080601316454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9feffa5d5a634996874831e07be8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 6141492080429249751}
+  <InitialState>k__BackingField: Idle
 --- !u!1 &6141492080601316456
 GameObject:
   m_ObjectHideFlags: 0

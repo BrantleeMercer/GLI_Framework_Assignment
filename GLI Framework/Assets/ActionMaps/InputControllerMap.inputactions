@@ -1,0 +1,34 @@
+{
+    "name": "InputControllerMap",
+    "maps": [
+        {
+            "name": "Scene Controller",
+            "id": "7ae2c900-872f-4272-aa86-34d4805e7fcb",
+            "actions": [
+                {
+                    "name": "Spawn AI",
+                    "type": "Button",
+                    "id": "331d58e0-ea0a-420b-a079-2f16028758e7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2be164ba-d29d-4632-8f3c-b4dd5e9c9fdf",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spawn AI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -54,51 +54,42 @@ public class SpawnManager : MonoBehaviour
         Debug.Log($"Turning on the object: {spawnedAgent.activeInHierarchy}");
     }
     
-    /// <summary>
-    /// Coroutine to play indefinably in scene if there is no button set up to spawn AI bots.
-    ///  After set amount of seconds, pulled from the TimeTillNextBotSpawns variable, this spawns a
-    /// new bot till the scene is destroyed. 
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator AutoGenAIBots()
-    {
-        while (true)
-        {
-            var spawnedAgent = PoolManager.Instance.GetPooledObject();
-        
-        
-            Debug.Log("Setting Position");
-            spawnedAgent.transform.position = StartPointTransform.position;
-            spawnedAgent.SetActive(true);
-            Debug.Log($"Turning on the object: {spawnedAgent.activeInHierarchy}");
-            yield return new WaitForSeconds(5f);
-        }
-    }
+    // /// <summary>
+    // /// Coroutine to play indefinably in scene if there is no button set up to spawn AI bots.
+    // ///  After set amount of seconds, pulled from the TimeTillNextBotSpawns variable, this spawns a
+    // /// new bot till the scene is destroyed. 
+    // /// </summary>
+    // /// <returns></returns>
+    // private IEnumerator AutoGenAIBots() //enable on death?
+    // {
+    //     yield return new WaitForSeconds(5f);
+    //     while (true)
+    //     {
+    //         var spawnedAgent = PoolManager.Instance.GetPooledObject();
+    //         if(!spawnedAgent)
+    //             yield break;
+    //     
+    //         Debug.Log("Setting Position");
+    //         spawnedAgent.transform.position = StartPointTransform.position;
+    //         spawnedAgent.SetActive(true);
+    //         Debug.Log($"Turning on the object: {spawnedAgent.activeInHierarchy}");
+    //         yield return new WaitForSeconds(5f);
+    //     }
+    // }
 
     private void OnEnable()
     {
-        if (SpawnAIKeyReference != null)
-        {
-            SpawnAIKeyReference.action.Enable();
-            SpawnAIKeyReference.action.performed += OnSpawnAIKeyPressed;
-        }
-        else
-        {
-            StartCoroutine(AutoGenAIBots());
-        }
+        SpawnAIKeyReference.action.Enable();
+        SpawnAIKeyReference.action.performed += OnSpawnAIKeyPressed;
+        
     }
 
     private void OnDisable()
     {
-        if (SpawnAIKeyReference != null)
-        {
-            SpawnAIKeyReference.action.Disable();
-            SpawnAIKeyReference.action.performed -= OnSpawnAIKeyPressed;
-        }
-        else
-        {
-            StopCoroutine(AutoGenAIBots());
-        }
+        
+        SpawnAIKeyReference.action.Disable();
+        SpawnAIKeyReference.action.performed -= OnSpawnAIKeyPressed;
+        
     }
 
     /// <summary>

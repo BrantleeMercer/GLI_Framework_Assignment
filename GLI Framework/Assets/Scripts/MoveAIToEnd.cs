@@ -18,14 +18,14 @@ namespace GLIFramework.Scripts
 
         private void Update()
         {
-            if (AiAgent.remainingDistance < 0.5f)
+            if (AiAgent.remainingDistance < 0.2f)
             {
                 AiAgent.isStopped = true;
             }
         }
 
         /// <summary>
-        /// Start moving the AI from the starting postion to the ending position.  This is done in the
+        /// Start moving the AI from the starting position to the ending position.  This is done in the
         /// OnEnable function due to object pooling.  When the bot is set to active in the hierarchy, that is
         /// when the ending position will be set.
         /// </summary>
@@ -36,7 +36,11 @@ namespace GLIFramework.Scripts
             
             if (_spawnManager == null)
                 Debug.LogError("Spawn Manager not found :: MoveAIToEnd.cs");
+            
+            Debug.Log($"MoveAIToEnd End point is at location: {_spawnManager.EndPoint.position}\nAI Location is : {this.transform.position}");
             AiAgent.destination = _spawnManager.EndPoint.position;
+            AiAgent.isStopped = false;
+            Debug.Log($"MoveAIToEnd remainging distance is: {AiAgent.remainingDistance}");
         }
     }
 }
