@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -25,6 +24,11 @@ namespace GLIFramework.Scripts
             }
         }
 
+        /// <summary>
+        /// Start moving the AI from the starting postion to the ending position.  This is done in the
+        /// OnEnable function due to object pooling.  When the bot is set to active in the hierarchy, that is
+        /// when the ending position will be set.
+        /// </summary>
         private void OnEnable()
         {
             Debug.Log("MoveAIToEnd on Enable is called");
