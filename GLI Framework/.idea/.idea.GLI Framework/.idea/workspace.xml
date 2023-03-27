@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="44ee8e85-b3be-4bc8-a0b6-17bb0ba2e1e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI Robot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AI Robot.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoveAIToEnd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MoveAIToEnd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WayPointBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WayPointBehavior.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +90,7 @@
       <updated>1679707076975</updated>
       <workItem from="1679707080365" duration="314000" />
       <workItem from="1679801710691" duration="5093000" />
-      <workItem from="1679882890909" duration="10126000" />
+      <workItem from="1679882890909" duration="11670000" />
     </task>
     <servers />
   </component>

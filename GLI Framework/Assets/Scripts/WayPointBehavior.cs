@@ -3,18 +3,13 @@ using System.Collections;
 using GLIFramework.Scripts.Enums;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace GLIFramework.Scripts
 {
     
     public class WayPointBehavior : MonoBehaviour
     {
-        /// <summary>
-        /// Number of seconds to wait until resetting the animation from hide to run
-        /// </summary>
-        [field: SerializeField, Tooltip("Number of seconds to wait until resetting the animation from hide to run")]
-        public float NumberOfSecondsToWaitTillMoving { get; private set; } = 2f;
-
         /// <summary>
         /// Bool if the waypoint is a cover position or not
         /// </summary>
@@ -42,14 +37,19 @@ namespace GLIFramework.Scripts
         private IEnumerator HideAndMove()
         {
             //Used for non cover waypoints
-            if(!ShouldHide)
+            if (!ShouldHide)
+            {
+                _agentMove.MoveAIToNextDest();
                 yield break;
+            }
             
             //After getting to the way point, set the animation to cover idle for hiding
             _agentMove.AiAgentAnimationManager.ChangeAnimationState(AIAnims.Cover_idle);
             _agentMove.CurrentState = AIStates.Hide;
+
+            var randomAmountOfTimeToHide = Random.Range(1f, 4f);
             
-            yield return new WaitForSeconds(NumberOfSecondsToWaitTillMoving);
+            yield return new WaitForSeconds(randomAmountOfTimeToHide);
             
             //After the set amount of seconds, move the AI bot again and set the animation to running
             _agentMove.AiAgent.isStopped = false;

@@ -746,6 +746,7 @@ GameObject:
   - component: {fileID: 1991194041286600}
   - component: {fileID: 3149350276311072983}
   - component: {fileID: 2849354752866953431}
+  - component: {fileID: 2686247139682584084}
   m_Layer: 0
   m_Name: AI Robot
   m_TagString: AI
@@ -827,6 +828,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <AiAgent>k__BackingField: {fileID: 9090070202351780585}
   <AiAgentAnimationManager>k__BackingField: {fileID: 3149350276311072983}
+  <CurrentState>k__BackingField: 0
+  <Health>k__BackingField: 10
+  <SecondsTillDestroyingBot>k__BackingField: 3
 --- !u!114 &3149350276311072983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,6 +859,22 @@ CapsuleCollider:
   m_Height: 0.8968601
   m_Direction: 1
   m_Center: {x: -0.00026099384, y: 0.73, z: -0.00438042}
+--- !u!54 &2686247139682584084
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141492080601316454}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6141492080601316456
 GameObject:
   m_ObjectHideFlags: 0

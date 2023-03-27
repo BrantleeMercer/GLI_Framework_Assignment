@@ -79,6 +79,7 @@ namespace GLIFramework.Scripts
             CurrentState = AIStates.Death;
             AiAgent.isStopped = true;
             AiAgentAnimationManager.ChangeAnimationState(AIAnims.Death);
+            //TODO: here will be setting 50 points for the player
             yield return new WaitForSeconds(SecondsTillDestroyingBot);
             gameObject.SetActive(false);
         }
