@@ -47,7 +47,10 @@ namespace GameDevHQ.FileBase.Plugins.FPS_Character_Controller
             _controller = GetComponent<CharacterController>(); //assign the reference variable to the component
             _fpsCamera = GetComponentInChildren<Camera>();
             _initialCameraPos = _fpsCamera.transform.localPosition;
+            // Hide the cursor
+            Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            
         }
 
         private void Update()
