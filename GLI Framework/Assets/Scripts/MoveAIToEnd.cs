@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using GLIFramework.Scripts.Enums;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,6 +18,21 @@ namespace GLIFramework.Scripts
         /// </summary>
         [field: SerializeField, Tooltip("Reference to the AI NavMeshAgent")]
         public AnimationManager AiAgentAnimationManager { get; private set; } = null;
+        /// <summary>
+        /// Reference to the AIs Current State
+        /// </summary>
+        [field: SerializeField, Tooltip("Reference to the AIs Current State")]
+        public AIStates CurrentState { get; set; } = AIStates.Run;
+        /// <summary>
+        /// Reference to the AIs Current Health
+        /// </summary>
+        [field: SerializeField, Tooltip("Reference to the AIs Current Health")]
+        public int Health { get; set; } = 10;
+        /// <summary>
+        /// Seconds until the death animation is done and we want to return the object to the object pool
+        /// </summary>
+        [field: SerializeField, Tooltip("Seconds until the death animation is done and we want to return the object to the object pool")]
+        public float SecondsTillDestroyingBot { get; private set; } = 3f;
 
         /// <summary>
         /// Reference to the SpawnManager singleton
@@ -34,12 +50,17 @@ namespace GLIFramework.Scripts
         /// Reference to the next destination transform
         /// </summary>
         private Transform _nextDestination = null;
+        /// <summary>
+        /// Reference to the AIs Max Health
+        /// </summary>
+        private const int MAX_HEALTH = 10;
 
         public void MoveAIToNextDest()
         {
             //Keep track of which waypoint the AI bot is at locally
             _currentWayPointIndex++;
             AiAgent.isStopped = false;
+            CurrentState = AIStates.Run;
 
             // //If the current waypoint is out of the index bounds, I.E it is past the last point, we'll set it to the end point, else it goes to the next waypoint in the list
             _nextDestination = _currentWayPointIndex >= _totalWayPointCount ? _spawnManager.EndPoint 
@@ -49,6 +70,18 @@ namespace GLIFramework.Scripts
             AiAgentAnimationManager.ChangeAnimationState(AIAnims.Running);
             Debug.Log($"Next Destination is: {_nextDestination.name}");
         }
+
+        /// <summary>
+        /// Coroutine to call when bot health has fallen to or below 0
+        /// </summary>
+        private IEnumerator AIBotHasDied()
+        {
+            CurrentState = AIStates.Death;
+            AiAgent.isStopped = true;
+            AiAgentAnimationManager.ChangeAnimationState(AIAnims.Death);
+            yield return new WaitForSeconds(SecondsTillDestroyingBot);
+            gameObject.SetActive(false);
+        }
         
         private void Update()
         {
@@ -57,6 +90,10 @@ namespace GLIFramework.Scripts
             {
                 AiAgent.isStopped = true;
             }
+
+            //Call death routine when bot has no health left
+            if (Health <= 0)
+                StartCoroutine(AIBotHasDied());
         }
 
         /// <summary>
@@ -66,6 +103,10 @@ namespace GLIFramework.Scripts
         /// </summary>
         private void OnEnable()
         {
+            Health = MAX_HEALTH;
+            CurrentState = AIStates.Run;
+            _currentWayPointIndex = 0;
+            
             Debug.Log("MoveAIToEnd on Enable is called");
             _spawnManager = SpawnManager.Instance;
 
@@ -74,7 +115,7 @@ namespace GLIFramework.Scripts
                 Debug.LogError("Spawn Manager not found :: MoveAIToEnd.cs");
                 return;
             }
-            
+
             //At the start, lets get the total number of way points
             _totalWayPointCount = _spawnManager.WayPointTransforms.Length;
             //Set starting waypoint

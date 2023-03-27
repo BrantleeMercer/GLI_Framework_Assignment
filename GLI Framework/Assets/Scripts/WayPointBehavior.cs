@@ -47,6 +47,7 @@ namespace GLIFramework.Scripts
             
             //After getting to the way point, set the animation to cover idle for hiding
             _agentMove.AiAgentAnimationManager.ChangeAnimationState(AIAnims.Cover_idle);
+            _agentMove.CurrentState = AIStates.Hide;
             
             yield return new WaitForSeconds(NumberOfSecondsToWaitTillMoving);
             
