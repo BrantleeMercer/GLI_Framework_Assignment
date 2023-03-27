@@ -1,4 +1,5 @@
 using System;
+using GLIFramework.Scripts.Enums;
 using UnityEngine;
 
 public class AnimationManager : MonoBehaviour
@@ -12,7 +13,7 @@ public class AnimationManager : MonoBehaviour
     /// The initial animation state to be set
     /// </summary>
     [field: SerializeField, Tooltip("The initial animation state to be set"), Header("Variables")]
-    private string InitialState { get; set; } = string.Empty;
+    private AIAnims InitialState { get; set; } = AIAnims.Idle;
     
     /// <summary>
     /// String representation of the current animation state
@@ -22,19 +23,28 @@ public class AnimationManager : MonoBehaviour
     ///<summary>
     /// This is at the core of changing the Animation States programatically 
     ///</summary>
-    public void ChangeAnimationState(string newState)
+    public void ChangeAnimationState(AIAnims newState)
     {
+        if(_currentAnimState.Equals(String.Empty))
+            _currentAnimState = InitialState.ToString();
+        
         //stop the same animation from interrupting itself
-        if (_currentAnimState.Equals(newState))
+        if (_currentAnimState.Equals(newState.ToString()))
             return;
         //Play the animation
-        Animator.Play(newState);
+        Animator.Play(newState.ToString());
         //Reassign the current state
-        _currentAnimState = newState;
+        _currentAnimState = newState.ToString();
     }
 
-    private void Start()
+    public string GetCurrentAnimationState()
     {
-        _currentAnimState = InitialState;
+        return _currentAnimState;
+    }
+
+    private void OnEnable()
+    {
+        _currentAnimState = InitialState.ToString();
+        ChangeAnimationState(InitialState);
     }
 }

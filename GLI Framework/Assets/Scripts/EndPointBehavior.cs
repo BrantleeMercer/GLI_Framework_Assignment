@@ -12,7 +12,6 @@ public class EndPointBehavior : MonoBehaviour
         if (!other.tag.Equals("AI"))
             return;
 
-        Debug.Log("It was an AI");
         var aiAgent = other.gameObject.GetComponent<NavMeshAgent>();
 
         if (aiAgent == null)
@@ -26,11 +25,9 @@ public class EndPointBehavior : MonoBehaviour
 
     private static IEnumerator TurnOffPooledAIObject(NavMeshAgent aiAgent)
     {
-        Debug.Log($"Coroutine started from end point");
         while (!aiAgent.isStopped)
         {
             yield return null;
-            Debug.Log($"AI agent isStopped: {aiAgent.isStopped}");
         }
 
         aiAgent.gameObject.SetActive(false);

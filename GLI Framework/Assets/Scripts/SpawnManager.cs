@@ -19,6 +19,11 @@ public class SpawnManager : MonoBehaviour
             Header("Object References")]
     public Transform StartPointTransform { get; private set; } = null;
     /// <summary>
+    /// List of waypoints for the AI bots to run through
+    /// </summary>
+    [field: SerializeField, Tooltip("List of waypoints for the AI bots to run through")]
+    public Transform[] WayPointTransforms { get; private set; } = null;
+    /// <summary>
     /// Reference to the end point object
     /// </summary>
     [field: SerializeField, Tooltip("Reference to the end point object")]

@@ -745,9 +745,10 @@ GameObject:
   - component: {fileID: 9090070202351780585}
   - component: {fileID: 1991194041286600}
   - component: {fileID: 3149350276311072983}
+  - component: {fileID: 2849354752866953431}
   m_Layer: 0
   m_Name: AI Robot
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -761,8 +762,8 @@ Transform:
   m_GameObject: {fileID: 6141492080601316454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6141492080601080266}
   - {fileID: 6141492080601080256}
@@ -804,7 +805,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -825,6 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AiAgent>k__BackingField: {fileID: 9090070202351780585}
+  <AiAgentAnimationManager>k__BackingField: {fileID: 3149350276311072983}
 --- !u!114 &3149350276311072983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,7 +840,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 6141492080429249751}
-  <InitialState>k__BackingField: Idle
+  <InitialState>k__BackingField: 3
+--- !u!136 &2849354752866953431
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141492080601316454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.23096626
+  m_Height: 0.8968601
+  m_Direction: 1
+  m_Center: {x: -0.00026099384, y: 0.73, z: -0.00438042}
 --- !u!1 &6141492080601316456
 GameObject:
   m_ObjectHideFlags: 0
