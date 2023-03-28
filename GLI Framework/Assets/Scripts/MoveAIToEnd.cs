@@ -27,7 +27,7 @@ namespace GLIFramework.Scripts
         /// Reference to the AIs Current Health
         /// </summary>
         [field: SerializeField, Tooltip("Reference to the AIs Current Health")]
-        public int Health { get; set; } = 10;
+        public int Health { get; private set; } = 10;
         /// <summary>
         /// Seconds until the death animation is done and we want to return the object to the object pool
         /// </summary>
@@ -55,6 +55,10 @@ namespace GLIFramework.Scripts
         /// </summary>
         private const int MAX_HEALTH = 10;
 
+        /// <summary>
+        /// Method that sets the the next waypoint location after the bot has reached its
+        /// current destination
+        /// </summary>
         public void MoveAIToNextDest()
         {
             //Keep track of which waypoint the AI bot is at locally
@@ -68,7 +72,6 @@ namespace GLIFramework.Scripts
             
             AiAgent.destination = _nextDestination.position;
             AiAgentAnimationManager.ChangeAnimationState(AIAnims.Running);
-            Debug.Log($"Next Destination is: {_nextDestination.name}");
         }
 
         /// <summary>
@@ -79,9 +82,24 @@ namespace GLIFramework.Scripts
             CurrentState = AIStates.Death;
             AiAgent.isStopped = true;
             AiAgentAnimationManager.ChangeAnimationState(AIAnims.Death);
-            //TODO: here will be setting 50 points for the player
+
             yield return new WaitForSeconds(SecondsTillDestroyingBot);
+            //Add the 50 points to the player total
+            GameManager.Instance.PlayerPoints += 50;
+            //Decrement the total bots remaining
+            GameManager.Instance.DecrementTotalBotCount();
             gameObject.SetActive(false);
+            
+            
+        }
+
+        /// <summary>
+        /// Helper function to set the amount of damage a bot has taken
+        /// </summary>
+        /// <param name="damageAmount">integer amount to decrease the bots health by</param>
+        public void DamageAIBot(int damageAmount)
+        {
+            Health -= damageAmount;
         }
         
         private void Update()
@@ -108,7 +126,6 @@ namespace GLIFramework.Scripts
             CurrentState = AIStates.Run;
             _currentWayPointIndex = 0;
             
-            Debug.Log("MoveAIToEnd on Enable is called");
             _spawnManager = SpawnManager.Instance;
 
             if (!_spawnManager)
@@ -122,7 +139,6 @@ namespace GLIFramework.Scripts
             //Set starting waypoint
             _nextDestination = _spawnManager.WayPointTransforms[_currentWayPointIndex];
 
-            Debug.Log($"Next Destination is: {_nextDestination.name}");
             AiAgent.destination = _nextDestination.position;
         }
     }

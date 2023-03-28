@@ -28,6 +28,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Player Actions",
+            "id": "46bb4be8-2271-42a7-8eb8-109018f8f925",
+            "actions": [
+                {
+                    "name": "ShootGun",
+                    "type": "Button",
+                    "id": "a101ba69-1453-45b9-84cd-e5dcd4635cae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1228fd5f-d3f2-4196-be16-88a22dea06a2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

@@ -50,6 +50,34 @@ public partial class @InputControllerMap: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Player Actions"",
+            ""id"": ""46bb4be8-2271-42a7-8eb8-109018f8f925"",
+            ""actions"": [
+                {
+                    ""name"": ""ShootGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""a101ba69-1453-45b9-84cd-e5dcd4635cae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1228fd5f-d3f2-4196-be16-88a22dea06a2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -57,6 +85,9 @@ public partial class @InputControllerMap: IInputActionCollection2, IDisposable
         // Scene Controller
         m_SceneController = asset.FindActionMap("Scene Controller", throwIfNotFound: true);
         m_SceneController_SpawnAI = m_SceneController.FindAction("Spawn AI", throwIfNotFound: true);
+        // Player Actions
+        m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
+        m_PlayerActions_ShootGun = m_PlayerActions.FindAction("ShootGun", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -160,8 +191,58 @@ public partial class @InputControllerMap: IInputActionCollection2, IDisposable
         }
     }
     public SceneControllerActions @SceneController => new SceneControllerActions(this);
+
+    // Player Actions
+    private readonly InputActionMap m_PlayerActions;
+    private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
+    private readonly InputAction m_PlayerActions_ShootGun;
+    public struct PlayerActionsActions
+    {
+        private @InputControllerMap m_Wrapper;
+        public PlayerActionsActions(@InputControllerMap wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ShootGun => m_Wrapper.m_PlayerActions_ShootGun;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Add(instance);
+            @ShootGun.started += instance.OnShootGun;
+            @ShootGun.performed += instance.OnShootGun;
+            @ShootGun.canceled += instance.OnShootGun;
+        }
+
+        private void UnregisterCallbacks(IPlayerActionsActions instance)
+        {
+            @ShootGun.started -= instance.OnShootGun;
+            @ShootGun.performed -= instance.OnShootGun;
+            @ShootGun.canceled -= instance.OnShootGun;
+        }
+
+        public void RemoveCallbacks(IPlayerActionsActions instance)
+        {
+            if (m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
     public interface ISceneControllerActions
     {
         void OnSpawnAI(InputAction.CallbackContext context);
+    }
+    public interface IPlayerActionsActions
+    {
+        void OnShootGun(InputAction.CallbackContext context);
     }
 }

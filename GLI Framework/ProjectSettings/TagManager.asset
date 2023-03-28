@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - AI
+  - Barrier
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Floor
-  - 
-  - 
+  - Barriers
+  - AI Bot
   - 
   - 
   - 

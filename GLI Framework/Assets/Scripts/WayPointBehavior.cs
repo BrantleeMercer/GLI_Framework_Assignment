@@ -20,7 +20,6 @@ namespace GLIFramework.Scripts
         
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log($"Collier of object tag is: {other.tag}");
             if (!other.tag.Equals("AI"))
                 return;
             

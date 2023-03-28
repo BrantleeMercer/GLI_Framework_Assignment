@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using GLIFramework.Scripts;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -17,17 +19,22 @@ public class SpawnManager : MonoBehaviour
     /// </summary>
     [field: SerializeField, Tooltip("Start Point for the spawn manager to spawn the pooled AI Agent"),
             Header("Object References")]
-    public Transform StartPointTransform { get; private set; } = null;
+    public Transform StartPointTransform { get; private set; } = null; 
+    /// <summary>
+    /// Reference to the end point object
+    /// </summary>
+    [field: SerializeField, Tooltip("Reference to the end point object")]
+    public Transform EndPoint { get; private set; } = null;
     /// <summary>
     /// List of waypoints for the AI bots to run through
     /// </summary>
     [field: SerializeField, Tooltip("List of waypoints for the AI bots to run through")]
     public Transform[] WayPointTransforms { get; private set; } = null;
     /// <summary>
-    /// Reference to the end point object
+    /// Reference to the AIBot object pool manager
     /// </summary>
-    [field: SerializeField, Tooltip("Reference to the end point object")]
-    public Transform EndPoint { get; private set; } = null;
+    [field: SerializeField, Tooltip("Reference to the AIBot object pool manager")]
+    public PoolManager BotPoolManager { get; private set; } = null;
     
     /// <summary>
     /// Reference to the Input Action to spawn an AI key
@@ -43,62 +50,51 @@ public class SpawnManager : MonoBehaviour
             ,Header("Variables")]
     public float TimeTillNextBotSpawns { get; private set; } = 5f;
 
+    private int _maxNumOfBots = 0;
+
     /// <summary>
-    /// Method to use a button press to spawn a new AI bot
+    /// Coroutine to play in scene. After set amount of seconds, pulled from the TimeTillNextBotSpawns variable,
+    /// this spawns a new bot till the scene is destroyed
     /// </summary>
-    private void OnSpawnAIKeyPressed(InputAction.CallbackContext context)
-    {
-        Debug.Log("Spawn AI Key Pressed!");
-        var spawnedAgent = PoolManager.Instance.GetPooledObject();
-        if (!spawnedAgent)
-            return;
-        
-        Debug.Log("Setting Position");
-        spawnedAgent.transform.position = StartPointTransform.position;
-        spawnedAgent.SetActive(true);
-        Debug.Log($"Turning on the object: {spawnedAgent.activeInHierarchy}");
-    }
-    
-    /// <summary>
-    /// Coroutine to play indefinably in scene if there is no button set up to spawn AI bots.
-    ///  After set amount of seconds, pulled from the TimeTillNextBotSpawns variable, this spawns a
-    /// new bot till the scene is destroyed. 
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator AutoGenAIBots() //enable on death?
+    private IEnumerator AutoGenAIBots()
     {
         yield return new WaitForSeconds(2f);
-        while (true)
+        bool keepSpawning = true;
+        int count = 0;
+        while (keepSpawning)
         {
-            var spawnedAgent = PoolManager.Instance.GetPooledObject();
+            var spawnedAgent = BotPoolManager.GetPooledObject();
             if (spawnedAgent)
             {
-                Debug.Log("Setting Position");
                 spawnedAgent.transform.position = StartPointTransform.position;
                 spawnedAgent.SetActive(true);
-                Debug.Log($"Turning on the object: {spawnedAgent.activeInHierarchy}");
+
+                count++;
+                yield return new WaitForSeconds(Random.Range(5f, 9f));
             }
             
+            //Stop spawning the AI Bots if there are more than the max number for this level
+            if (count >= _maxNumOfBots)
+            {
+                keepSpawning = false;
+            }
             
-            yield return new WaitForSeconds(Random.Range(5f, 9f));
         }
     }
 
     private void OnEnable()
     {
-        SpawnAIKeyReference.action.Enable();
-        SpawnAIKeyReference.action.performed += OnSpawnAIKeyPressed;
-
         StartCoroutine(AutoGenAIBots());
     }
 
     private void OnDisable()
     {
-        
-        SpawnAIKeyReference.action.Disable();
-        SpawnAIKeyReference.action.performed -= OnSpawnAIKeyPressed;
-        
         StopCoroutine(AutoGenAIBots());
+    }
+
+    private void Start()
+    {
+        _maxNumOfBots = GameManager.Instance.TotalBotCount;
     }
 
     /// <summary>

@@ -3,9 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="44ee8e85-b3be-4bc8-a0b6-17bb0ba2e1e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Extensions/Systems/Controls/FPS_Character_Controller/Scripts/FPS_Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Extensions/Systems/Controls/FPS_Character_Controller/Scripts/FPS_Controller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.polybrush/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.polybrush/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ActionMaps/InputControllerMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ActionMaps/InputControllerMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ActionMaps/InputControllerMap.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ActionMaps/InputControllerMap.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI Robot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AI Robot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Materials/ForceWall_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Materials/ForceWall_mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Prefabs/GDHQ_FPS_Controller.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Prefabs/GDHQ_FPS_Controller.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoveAIToEnd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MoveAIToEnd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PoolManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WayPointBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WayPointBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +21,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/GameDevHQ/FileBase/VFX/Particles/ParticleSparkCleanUp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AnimationManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/AIAnims.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -90,6 +100,10 @@
       <workItem from="1679707080365" duration="314000" />
       <workItem from="1679801710691" duration="5093000" />
       <workItem from="1679882890909" duration="12515000" />
+      <workItem from="1679941782434" duration="2611000" />
+      <workItem from="1679949792007" duration="30000" />
+      <workItem from="1679949886858" duration="2000" />
+      <workItem from="1679949896810" duration="14176000" />
     </task>
     <servers />
   </component>
