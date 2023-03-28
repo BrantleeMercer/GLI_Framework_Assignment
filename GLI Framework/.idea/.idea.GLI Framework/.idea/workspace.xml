@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44ee8e85-b3be-4bc8-a0b6-17bb0ba2e1e5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ActionMaps/InputControllerMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ActionMaps/InputControllerMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ActionMaps/InputControllerMap.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ActionMaps/InputControllerMap.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI Robot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AI Robot.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Materials/ForceWall_mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Materials/ForceWall_mat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Prefabs/GDHQ_FPS_Controller.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Prefabs/GDHQ_FPS_Controller.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoveAIToEnd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MoveAIToEnd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WayPointBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WayPointBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-    </list>
+    <list default="true" id="44ee8e85-b3be-4bc8-a0b6-17bb0ba2e1e5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,7 +90,7 @@
       <workItem from="1679941782434" duration="2611000" />
       <workItem from="1679949792007" duration="30000" />
       <workItem from="1679949886858" duration="2000" />
-      <workItem from="1679949896810" duration="14176000" />
+      <workItem from="1679949896810" duration="14733000" />
     </task>
     <servers />
   </component>
