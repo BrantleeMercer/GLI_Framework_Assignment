@@ -85,9 +85,7 @@ namespace GLIFramework.Scripts
 
             yield return new WaitForSeconds(SecondsTillDestroyingBot);
             //Add the 50 points to the player total
-            GameManager.Instance.PlayerPoints += 50;
-            //Decrement the total bots remaining
-            GameManager.Instance.DecrementTotalBotCount();
+            UIManager.Instance.UpdateCount(LabelName.Score, 50);
             gameObject.SetActive(false);
             
             

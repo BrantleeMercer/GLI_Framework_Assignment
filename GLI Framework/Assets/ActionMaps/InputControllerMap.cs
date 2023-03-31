@@ -35,6 +35,15 @@ public partial class @InputControllerMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quit Game"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7588594-d39f-4e77-8cb6-6f4d8fd09bfa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -46,6 +55,17 @@ public partial class @InputControllerMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Spawn AI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3233c09b-90f0-4ecd-84e5-a9652ba709df"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit Game"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -85,6 +105,7 @@ public partial class @InputControllerMap: IInputActionCollection2, IDisposable
         // Scene Controller
         m_SceneController = asset.FindActionMap("Scene Controller", throwIfNotFound: true);
         m_SceneController_SpawnAI = m_SceneController.FindAction("Spawn AI", throwIfNotFound: true);
+        m_SceneController_QuitGame = m_SceneController.FindAction("Quit Game", throwIfNotFound: true);
         // Player Actions
         m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
         m_PlayerActions_ShootGun = m_PlayerActions.FindAction("ShootGun", throwIfNotFound: true);
@@ -150,11 +171,13 @@ public partial class @InputControllerMap: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_SceneController;
     private List<ISceneControllerActions> m_SceneControllerActionsCallbackInterfaces = new List<ISceneControllerActions>();
     private readonly InputAction m_SceneController_SpawnAI;
+    private readonly InputAction m_SceneController_QuitGame;
     public struct SceneControllerActions
     {
         private @InputControllerMap m_Wrapper;
         public SceneControllerActions(@InputControllerMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @SpawnAI => m_Wrapper.m_SceneController_SpawnAI;
+        public InputAction @QuitGame => m_Wrapper.m_SceneController_QuitGame;
         public InputActionMap Get() { return m_Wrapper.m_SceneController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -167,6 +190,9 @@ public partial class @InputControllerMap: IInputActionCollection2, IDisposable
             @SpawnAI.started += instance.OnSpawnAI;
             @SpawnAI.performed += instance.OnSpawnAI;
             @SpawnAI.canceled += instance.OnSpawnAI;
+            @QuitGame.started += instance.OnQuitGame;
+            @QuitGame.performed += instance.OnQuitGame;
+            @QuitGame.canceled += instance.OnQuitGame;
         }
 
         private void UnregisterCallbacks(ISceneControllerActions instance)
@@ -174,6 +200,9 @@ public partial class @InputControllerMap: IInputActionCollection2, IDisposable
             @SpawnAI.started -= instance.OnSpawnAI;
             @SpawnAI.performed -= instance.OnSpawnAI;
             @SpawnAI.canceled -= instance.OnSpawnAI;
+            @QuitGame.started -= instance.OnQuitGame;
+            @QuitGame.performed -= instance.OnQuitGame;
+            @QuitGame.canceled -= instance.OnQuitGame;
         }
 
         public void RemoveCallbacks(ISceneControllerActions instance)
@@ -240,6 +269,7 @@ public partial class @InputControllerMap: IInputActionCollection2, IDisposable
     public interface ISceneControllerActions
     {
         void OnSpawnAI(InputAction.CallbackContext context);
+        void OnQuitGame(InputAction.CallbackContext context);
     }
     public interface IPlayerActionsActions
     {
