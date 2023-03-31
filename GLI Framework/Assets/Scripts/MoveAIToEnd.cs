@@ -79,16 +79,19 @@ namespace GLIFramework.Scripts
         /// </summary>
         private IEnumerator AIBotHasDied()
         {
+            if (CurrentState == AIStates.Death)
+                yield break;
+            
             CurrentState = AIStates.Death;
             AiAgent.isStopped = true;
+            //Add the 50 points to the player total
+            UIManager.Instance.UpdateCount(LabelName.Score);
+            UIManager.Instance.UpdateCount(LabelName.Enemy);
+            AudioManager.Instance.PlaySoundEffect(SoundFX.AIBotDeath);
             AiAgentAnimationManager.ChangeAnimationState(AIAnims.Death);
 
             yield return new WaitForSeconds(SecondsTillDestroyingBot);
-            //Add the 50 points to the player total
-            UIManager.Instance.UpdateCount(LabelName.Score, 50);
             gameObject.SetActive(false);
-            
-            
         }
 
         /// <summary>

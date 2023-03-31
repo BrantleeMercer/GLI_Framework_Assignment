@@ -59,16 +59,17 @@ namespace GLIFramework.Scripts
         /// </summary>
         /// <param name="label"><see cref="LabelName"/> of Score, Ammo, or Enemy</param>
         /// <param name="amount">Float amount to change the values (Use negative values to decrease amount)</param>
-        public void UpdateCount(LabelName label, float amount = 0)
+        public void UpdateCount(LabelName label)
         {
             switch (label)
             {
                 case LabelName.Score:
-                    ScoreCountUGUI.text = (int.Parse(ScoreCountUGUI.text) + amount).ToString();
-                    GameManager.Instance.PlayerPoints = int.Parse(ScoreCountUGUI.text);
+                    GameManager.Instance.AddPointsToPlayer();
+                    ScoreCountUGUI.text = GameManager.Instance.PlayerPoints.ToString();
                     break;
                 case LabelName.Ammo:
-                    AmmoCountUGUI.text = (int.Parse(AmmoCountUGUI.text) + amount).ToString();
+                    GameManager.Instance.DecrementTotalAmmoCount();
+                    AmmoCountUGUI.text = GameManager.Instance.TotalAmmoCount.ToString();
                     break;
                 case LabelName.Time:
                     break;

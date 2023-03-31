@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GLIFramework.Scripts
 {
-    public enum Sounds
+    public enum SoundFX
     {
         Gunfire,
         BarrierHit,
+        AIHit,
         AIBotDeath,
         AIBotDone,
     }
@@ -35,6 +34,11 @@ namespace GLIFramework.Scripts
         [field: SerializeField, Tooltip("Audio clip for shooting the barrier")]
         public AudioClip BarrierShot { get; private set; } = null;
         /// <summary>
+        /// Audio clip for hitting an AI Bot
+        /// </summary>
+        [field: SerializeField, Tooltip("Audio clip for hitting an AI Bot")]
+        public AudioClip AIBotShot { get; private set; } = null;
+        /// <summary>
         /// Audio Background music
         /// </summary>
         [field: SerializeField, Tooltip("Audio Background music")]
@@ -49,8 +53,33 @@ namespace GLIFramework.Scripts
         /// </summary>
         [field: SerializeField, Tooltip("Audio clip for bot who has reached the finish line")]
         public AudioClip AIBotRunCompleted { get; private set; } = null;
-        
-        
+
+        /// <summary>
+        /// Helper function to play the sound as a playOneShot() function call
+        /// </summary>
+        /// <param name="sfx">Custom Enum to get the naming correct</param>
+        public void PlaySoundEffect(SoundFX sfx)
+        {
+            switch (sfx)
+            {
+                case SoundFX.Gunfire:
+                    MAudioSource.PlayOneShot(WeaponFire);
+                    break;
+                case SoundFX.BarrierHit:
+                    MAudioSource.PlayOneShot(BarrierShot);
+                    break;
+                case SoundFX.AIHit:
+                    MAudioSource.PlayOneShot(AIBotShot);
+                    break;
+                case SoundFX.AIBotDeath:
+                    MAudioSource.PlayOneShot(AIBotDeath);
+                    break;
+                case SoundFX.AIBotDone:
+                    MAudioSource.PlayOneShot(AIBotRunCompleted);
+                    break;
+            }
+        }
+
         private void Awake()
         {
             if (Instance != null && Instance != this) 

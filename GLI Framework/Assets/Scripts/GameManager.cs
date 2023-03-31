@@ -24,9 +24,20 @@ namespace GLIFramework.Scripts
         [field: SerializeField, Tooltip("Total Number of bots that will be in the scene.  Used to track for win/lose condition"), Header("Variables")]
         public int TotalBotCount { get; private set; } = 5;
         /// <summary>
+        /// Total ammo the player has.  Used to track for win/lose condition
+        /// </summary>
+        [field: SerializeField, Tooltip("Total ammo the player has.  Used to track for win/lose condition")]
+        public int TotalAmmoCount { get; private set; } = 25;
+        /// <summary>
+        /// The amount of points the AI Bots are worth
+        /// </summary>
+        [field: SerializeField, Tooltip("The amount of points the AI Bots are worth")]
+        public int BotPointValue { get; private set; } = 50;
+        /// <summary>
         /// Game Manager to keep track of the players score
         /// </summary>
         public int PlayerPoints { get; set; } = 0; //Not being visible in the inspector is an intended consequence
+        
 
         /// <summary>
         /// Method called when the barriers are destroyed to start rebuilding them
@@ -79,6 +90,22 @@ namespace GLIFramework.Scripts
         public void DecrementTotalBotCount()
         {
             TotalBotCount--;
+        }
+        
+        /// <summary>
+        /// Helper method ot decrement the total amount of ammo as it is used
+        /// </summary>
+        public void DecrementTotalAmmoCount()
+        {
+            TotalAmmoCount--;
+        }
+        
+        /// <summary>
+        /// Helper method ot decrement the total bot count by 1
+        /// </summary>
+        public void AddPointsToPlayer()
+        {
+            PlayerPoints += BotPointValue;
         }
 
         /// <summary>

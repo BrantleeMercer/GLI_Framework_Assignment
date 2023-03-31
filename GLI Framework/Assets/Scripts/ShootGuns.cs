@@ -40,6 +40,12 @@ namespace GLIFramework.Scripts
         
         private void OnShootButtonPressed(InputAction.CallbackContext context)
         {
+            if(GameManager.Instance.TotalAmmoCount <= 0)
+                return;
+            
+            UIManager.Instance.UpdateCount(LabelName.Ammo);
+            AudioManager.Instance.PlaySoundEffect(SoundFX.Gunfire);
+
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             
             //Using the reticule as the focal point, after clicking the shoot button, we send out a raycast.  If there is a hit and it is a barrier or ai bot we continue
@@ -51,11 +57,13 @@ namespace GLIFramework.Scripts
                 Debug.Log($"Hit: {hit.collider.name}");
                 if (hit.collider.tag.Equals("AI"))
                 {
+                    AudioManager.Instance.PlaySoundEffect(SoundFX.AIHit);
                     hit.collider.gameObject.GetComponent<MoveAIToEnd>().DamageAIBot(DamageAmount);
                 }
 
                 if (hit.collider.tag.Equals("Barrier"))
                 {
+                    AudioManager.Instance.PlaySoundEffect(SoundFX.BarrierHit);
                     var temp = hit.collider.gameObject.GetComponent<BarrierBehavior>();
                     temp.DamageForceField(DamageAmount);
                 }

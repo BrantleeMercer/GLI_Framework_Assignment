@@ -8,7 +8,6 @@ public class EndPointBehavior : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("End Point trigger entered");
         if (!other.tag.Equals("AI"))
             return;
 
@@ -25,6 +24,7 @@ public class EndPointBehavior : MonoBehaviour
 
     private static IEnumerator TurnOffPooledAIObject(NavMeshAgent aiAgent)
     {
+        AudioManager.Instance.PlaySoundEffect(SoundFX.AIBotDone);
         while (!aiAgent.isStopped)
         {
             yield return null;
