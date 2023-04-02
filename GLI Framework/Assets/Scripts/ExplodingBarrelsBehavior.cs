@@ -29,11 +29,8 @@ namespace GLIFramework.Scripts
         public void DamageBarrel(int damageAmount)
         {
             if (BarrelHealth > 0)
-            {
                 BarrelHealth -= damageAmount;
-                Debug.Log($"Damaged the barrel, health remaining is: {BarrelHealth}");
-            }
-            
+                
             //Play the explosion if the barrel has 0 health and the explosion prefab is not already on
             if(BarrelHealth <= 0 && !ExplosionGameObject.activeSelf)
                 StartCoroutine(DestroyingBarrel());
