@@ -56,6 +56,11 @@ namespace GLIFramework.Scripts
         private const int MAX_HEALTH = 10;
 
         /// <summary>
+        /// Action to invoke whenever a bot has been killed
+        /// </summary>
+        public static Action OnBotHasDied;
+
+        /// <summary>
         /// Method that sets the the next waypoint location after the bot has reached its
         /// current destination
         /// </summary>
@@ -83,6 +88,7 @@ namespace GLIFramework.Scripts
                 yield break;
             
             CurrentState = AIStates.Death;
+            OnBotHasDied?.Invoke();
             AiAgent.isStopped = true;
             //Add the 50 points to the player total
             UIManager.Instance.UpdateCount(LabelName.Score);

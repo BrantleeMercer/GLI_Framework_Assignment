@@ -1,4 +1,5 @@
 using System.Collections;
+using GLIFramework.Scripts.Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -47,6 +48,17 @@ namespace GLIFramework.Scripts
         }
         
         /// <summary>
+        /// Listener for when the last bot has finished the race
+        /// </summary>
+        private void CheckPercentageLossCondition(float percentageKilled)
+        {
+            if (percentageKilled < 50f)
+                UIManager.Instance.EndGameConditions(GameStatus.Loss);
+            else
+                UIManager.Instance.EndGameConditions(GameStatus.Win);
+        }
+        
+        /// <summary>
         /// Using the new input system, this listens for the quit button to be pressed, then opens the quit menu
         /// </summary>
         private void OpenQuitMenu(InputAction.CallbackContext context)
@@ -90,7 +102,7 @@ namespace GLIFramework.Scripts
         {
             TotalBotCount--;
             if (TotalBotCount == 0) //Win the game if the bot count is at 0
-                UIManager.Instance.WinConditionMet();
+                UIManager.Instance.EndGameConditions(GameStatus.Win);
         }
         
         /// <summary>
@@ -99,6 +111,8 @@ namespace GLIFramework.Scripts
         public void DecrementTotalAmmoCount()
         {
             TotalAmmoCount--;
+            if(TotalAmmoCount == 0) //Loss condition if the player runs out of ammo
+                UIManager.Instance.EndGameConditions(GameStatus.Loss);
         }
         
         /// <summary>
@@ -126,13 +140,14 @@ namespace GLIFramework.Scripts
         {
             Application.Quit();
         }
-
+        
         private void OnEnable()
         {
             QuitButtonInputReference.action.Enable();
             QuitButtonInputReference.action.performed += OpenQuitMenu;
             
             BarrierBehavior.OnBarrierBroken += ShieldsDown;
+            EndPointBehavior.OnLastBotFinishedRun += CheckPercentageLossCondition;
         }
 
         private void OnDisable()
@@ -141,6 +156,7 @@ namespace GLIFramework.Scripts
             QuitButtonInputReference.action.performed -= OpenQuitMenu;
                         
             BarrierBehavior.OnBarrierBroken -= ShieldsDown;
+            EndPointBehavior.OnLastBotFinishedRun -= CheckPercentageLossCondition;
         }
 
         private void Awake()

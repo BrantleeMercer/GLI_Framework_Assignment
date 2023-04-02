@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="44ee8e85-b3be-4bc8-a0b6-17bb0ba2e1e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EndPointBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EndPointBehavior.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoveAIToEnd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MoveAIToEnd.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +19,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AnimationManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/AIAnims.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/GameStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -107,7 +111,7 @@
       <workItem from="1680109595361" duration="10350000" />
       <workItem from="1680222572638" duration="3110000" />
       <workItem from="1680227720813" duration="6520000" />
-      <workItem from="1680402398209" duration="1167000" />
+      <workItem from="1680402398209" duration="4909000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using GLIFramework.Scripts.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -90,15 +91,19 @@ namespace GLIFramework.Scripts
                     break;
             }
         }
-        
+
         /// <summary>
-        /// Helper method to handle what to do when the win condition is met
+        /// Helper method to handle what to show at the end of the game session
         /// </summary>
-        public void WinConditionMet()
+        /// <param name="status"><see cref="GameStatus"/> Win or Loss</param>
+        public void EndGameConditions(GameStatus status)
         {
             Cursor.visible = true;
             GameOverUIContainer.SetActive(true);
-            YouWinUIMessageContainer.SetActive(true);
+            if (status == GameStatus.Win)
+                YouWinUIMessageContainer.SetActive(true);
+            else 
+                GameOverUIMessageContainer.SetActive(true);
         }
 
         /// <summary>
@@ -143,17 +148,19 @@ namespace GLIFramework.Scripts
             switch (cause)
             {
                 case LabelName.Ammo:
+                    //anything special to satisfy the ammo game over goes here
                     break;
                 case LabelName.Enemy:
+                    //anything special to satisfy the enemy count game over goes here
                     break;
                 case LabelName.Time:
+                    //anything special to satisfy the time game over goes here
                     break;
                 default:
                     return;
             }
 
-            GameOverUIContainer.SetActive(true);
-            GameOverUIMessageContainer.SetActive(true);
+            EndGameConditions(GameStatus.Loss);
         }
 
         private void Update()

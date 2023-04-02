@@ -11412,7 +11412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <QuitButtonInputReference>k__BackingField: {fileID: -270083346640823714, guid: 2e20160c61a01df479bebd8b894996c3,
     type: 3}
-  <TotalBotCount>k__BackingField: 30
+  <TotalBotCount>k__BackingField: 2
   <TotalAmmoCount>k__BackingField: 25
   <BotPointValue>k__BackingField: 50
 --- !u!4 &513465766
