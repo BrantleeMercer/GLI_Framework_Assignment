@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GLIFramework.Scripts
 {
-    public enum SoundFX
+    public enum SoundFX //TODO: Make this a separate Enum inside of the enum folder
     {
         Gunfire,
         BarrierHit,

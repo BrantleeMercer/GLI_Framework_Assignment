@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="44ee8e85-b3be-4bc8-a0b6-17bb0ba2e1e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AudioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EndPointBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EndPointBehavior.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoveAIToEnd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MoveAIToEnd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ShootGuns.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ShootGuns.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +45,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds/Test Runthrough/V1.0.0\GLI Course Work.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds/Test Runthrough/New folder\GLI Course Work.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\contr\Desktop\Game Development\GameDevHQ\Framework\GLI_Framework\GLI_Framework_Assignment\GLI Framework\Builds\Test Runthrough\V1.0.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -112,6 +107,7 @@
       <workItem from="1680109595361" duration="10350000" />
       <workItem from="1680222572638" duration="3110000" />
       <workItem from="1680227720813" duration="6520000" />
+      <workItem from="1680402398209" duration="1167000" />
     </task>
     <servers />
   </component>

@@ -37,7 +37,6 @@ namespace GLIFramework.Scripts
         /// Game Manager to keep track of the players score
         /// </summary>
         public int PlayerPoints { get; set; } = 0; //Not being visible in the inspector is an intended consequence
-        
 
         /// <summary>
         /// Method called when the barriers are destroyed to start rebuilding them
@@ -90,6 +89,8 @@ namespace GLIFramework.Scripts
         public void DecrementTotalBotCount()
         {
             TotalBotCount--;
+            if (TotalBotCount == 0) //Win the game if the bot count is at 0
+                UIManager.Instance.WinConditionMet();
         }
         
         /// <summary>
@@ -133,8 +134,6 @@ namespace GLIFramework.Scripts
             
             BarrierBehavior.OnBarrierBroken += ShieldsDown;
         }
-
-        
 
         private void OnDisable()
         {

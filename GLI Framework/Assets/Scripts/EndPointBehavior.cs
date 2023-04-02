@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class EndPointBehavior : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.tag.Equals("AI"))

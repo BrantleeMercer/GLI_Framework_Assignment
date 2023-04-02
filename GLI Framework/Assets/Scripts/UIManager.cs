@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace GLIFramework.Scripts
 {
-    public enum LabelName
+    public enum LabelName //TODO: Make this a separate Enum inside of the enum folder
     {
         Score,
         Ammo,
@@ -47,6 +47,16 @@ namespace GLIFramework.Scripts
         /// </summary>
         [field: SerializeField, Tooltip("Game object that holds the Game Over section of the UI"), Header("Object References")]
         public GameObject GameOverUIContainer { get; private set; } = null;
+        /// <summary>
+        /// Game object that holds the Game Over message UI
+        /// </summary>
+        [field: SerializeField, Tooltip("Game object that holds the Game Over message UI")]
+        public GameObject GameOverUIMessageContainer { get; private set; } = null;
+        /// <summary>
+        /// Game object that holds the You Win message UI
+        /// </summary>
+        [field: SerializeField, Tooltip("Game object that holds the You Win message UI")]
+        public GameObject YouWinUIMessageContainer { get; private set; } = null;
 
         /// <summary>
         /// Time remaining for the game in seconds
@@ -79,6 +89,16 @@ namespace GLIFramework.Scripts
                     EnemiesCountUGUI.text = GameManager.Instance.TotalBotCount.ToString();
                     break;
             }
+        }
+        
+        /// <summary>
+        /// Helper method to handle what to do when the win condition is met
+        /// </summary>
+        public void WinConditionMet()
+        {
+            Cursor.visible = true;
+            GameOverUIContainer.SetActive(true);
+            YouWinUIMessageContainer.SetActive(true);
         }
 
         /// <summary>
@@ -133,6 +153,7 @@ namespace GLIFramework.Scripts
             }
 
             GameOverUIContainer.SetActive(true);
+            GameOverUIMessageContainer.SetActive(true);
         }
 
         private void Update()
