@@ -35,6 +35,10 @@ namespace GLIFramework.Scripts
         /// LayerMask for AI Bots
         /// </summary>
         private LayerMask _aiBot = 1 << 8;
+        /// <summary>
+        /// LayerMask for Exploding barrels
+        /// </summary>
+        private LayerMask _explodingBarrels = 1 << 9;
 
         public Action OnBarrierBroken;
         
@@ -51,7 +55,7 @@ namespace GLIFramework.Scripts
             //Using the reticule as the focal point, after clicking the shoot button, we send out a raycast.  If there is a hit and it is a barrier or ai bot we continue
             //otherwise we finish
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity,
-                    _barriers | _aiBot))
+                    _barriers | _aiBot | _explodingBarrels))
             {
                 Vector3 hitPoint = hit.point; // Holds the point at which the ray hits
                 Debug.Log($"Hit: {hit.collider.name}");
@@ -66,6 +70,13 @@ namespace GLIFramework.Scripts
                     AudioManager.Instance.PlaySoundEffect(SoundFX.BarrierHit);
                     var temp = hit.collider.gameObject.GetComponent<BarrierBehavior>();
                     temp.DamageForceField(DamageAmount);
+                }
+                
+                if (hit.collider.tag.Equals("Barrel"))
+                {
+                    AudioManager.Instance.PlaySoundEffect(SoundFX.BarrierHit);
+                    var temp = hit.collider.gameObject.GetComponent<ExplodingBarrelsBehavior>();
+                    temp.DamageBarrel(DamageAmount);
                 }
 
                 Instantiate(BulletSparkPrefab, hitPoint, Quaternion.identity);
