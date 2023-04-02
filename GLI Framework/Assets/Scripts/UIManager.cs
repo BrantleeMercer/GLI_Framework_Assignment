@@ -111,7 +111,7 @@ namespace GLIFramework.Scripts
         {
             Cursor.visible = false;
             ScoreCountUGUI.text = "0";
-            AmmoCountUGUI.text = "25";
+            AmmoCountUGUI.text = GameManager.Instance.TotalAmmoCount.ToString();
             EnemiesCountUGUI.text = GameManager.Instance.TotalBotCount.ToString();
             GameOverUIContainer.SetActive(false);
         }

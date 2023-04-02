@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44ee8e85-b3be-4bc8-a0b6-17bb0ba2e1e5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GLI Framework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Project Starter/Scenes/GLI_1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BarrierBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BarrierBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExplodingBarrelsBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExplodingBarrelsBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExplosionBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExplosionBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ShootGuns.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ShootGuns.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WayPointBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WayPointBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
