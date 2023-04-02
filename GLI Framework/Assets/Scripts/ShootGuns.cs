@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace GLIFramework.Scripts
 {
@@ -58,7 +55,6 @@ namespace GLIFramework.Scripts
                     _barriers | _aiBot | _explodingBarrels))
             {
                 Vector3 hitPoint = hit.point; // Holds the point at which the ray hits
-                Debug.Log($"Hit: {hit.collider.name}");
                 if (hit.collider.tag.Equals("AI"))
                 {
                     AudioManager.Instance.PlaySoundEffect(SoundFX.AIHit);

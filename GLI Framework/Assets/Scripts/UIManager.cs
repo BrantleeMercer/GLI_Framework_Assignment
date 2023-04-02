@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using GLIFramework.Scripts.Enums;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace GLIFramework.Scripts
 {

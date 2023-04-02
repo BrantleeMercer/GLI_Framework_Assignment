@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using GLIFramework.Scripts.Enums;
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace GLIFramework.Scripts

@@ -8,6 +8,7 @@ TagManager:
   - AI
   - Barrier
   - HUD
+  - Barrel
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Floor
   - Barriers
   - AI Bot
-  - 
+  - Barrel
   - 
   - 
   - 
