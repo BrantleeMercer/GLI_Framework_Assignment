@@ -11423,7 +11423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <QuitButtonInputReference>k__BackingField: {fileID: -270083346640823714, guid: 2e20160c61a01df479bebd8b894996c3,
     type: 3}
-  <TotalBotCount>k__BackingField: 15
+  <TotalBotCount>k__BackingField: 1
   <TotalAmmoCount>k__BackingField: 50
   <BotPointValue>k__BackingField: 50
 --- !u!4 &513465766
@@ -23188,6 +23188,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113535220413470915, guid: 90af82cf74f5262449092fd323b8d655,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919894234061977275, guid: 90af82cf74f5262449092fd323b8d655,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3970025777034801900, guid: 90af82cf74f5262449092fd323b8d655,
         type: 3}

@@ -13,43 +13,53 @@ namespace GLIFramework.Scripts
         /// </summary>
         [field: SerializeField, Tooltip("Reference to the AI NavMeshAgent")]
         public NavMeshAgent AiAgent { get; private set; } = null;
+
         /// <summary>
         /// Reference to the Animation Manager for this AI Unit
         /// </summary>
         [field: SerializeField, Tooltip("Reference to the AI NavMeshAgent")]
         public AnimationManager AiAgentAnimationManager { get; private set; } = null;
+
         /// <summary>
         /// Reference to the AIs Current State
         /// </summary>
         [field: SerializeField, Tooltip("Reference to the AIs Current State")]
         public AIStates CurrentState { get; set; } = AIStates.Run;
+
         /// <summary>
         /// Reference to the AIs Current Health
         /// </summary>
         [field: SerializeField, Tooltip("Reference to the AIs Current Health")]
         public int Health { get; private set; } = 10;
+
         /// <summary>
         /// Seconds until the death animation is done and we want to return the object to the object pool
         /// </summary>
-        [field: SerializeField, Tooltip("Seconds until the death animation is done and we want to return the object to the object pool")]
+        [field: SerializeField,
+                Tooltip(
+                    "Seconds until the death animation is done and we want to return the object to the object pool")]
         public float SecondsTillDestroyingBot { get; private set; } = 3f;
 
         /// <summary>
         /// Reference to the SpawnManager singleton
         /// </summary>
         private SpawnManager _spawnManager;
+
         /// <summary>
         /// Counter to determine what waypoint the AI is at
         /// </summary>
         private int _currentWayPointIndex = 0;
+
         /// <summary>
         /// Total number of waypoints, excluding the starting waypoint
         /// </summary>
         private static int _totalWayPointCount = 0;
+
         /// <summary>
         /// Reference to the next destination transform
         /// </summary>
         private Transform _nextDestination = null;
+
         /// <summary>
         /// Reference to the AIs Max Health
         /// </summary>
@@ -72,9 +82,10 @@ namespace GLIFramework.Scripts
             CurrentState = AIStates.Run;
 
             // //If the current waypoint is out of the index bounds, I.E it is past the last point, we'll set it to the end point, else it goes to the next waypoint in the list
-            _nextDestination = _currentWayPointIndex >= _totalWayPointCount ? _spawnManager.EndPoint 
+            _nextDestination = _currentWayPointIndex >= _totalWayPointCount
+                ? _spawnManager.EndPoint
                 : _spawnManager.WayPointTransforms[_currentWayPointIndex];
-            
+
             AiAgent.destination = _nextDestination.position;
             AiAgentAnimationManager.ChangeAnimationState(AIAnims.Running);
         }
@@ -86,7 +97,7 @@ namespace GLIFramework.Scripts
         {
             if (CurrentState == AIStates.Death)
                 yield break;
-            
+
             CurrentState = AIStates.Death;
             OnBotHasDied?.Invoke();
             AiAgent.isStopped = true;
@@ -108,7 +119,9 @@ namespace GLIFramework.Scripts
         {
             Health -= damageAmount;
         }
-        
+
+        #region Unity Built-Ins
+
         private void Update()
         {
             //When agent is close to the stopping point, set the isStopped variable to true
@@ -132,7 +145,7 @@ namespace GLIFramework.Scripts
             Health = MAX_HEALTH;
             CurrentState = AIStates.Run;
             _currentWayPointIndex = 0;
-            
+
             _spawnManager = SpawnManager.Instance;
 
             if (!_spawnManager)
@@ -148,5 +161,7 @@ namespace GLIFramework.Scripts
 
             AiAgent.destination = _nextDestination.position;
         }
+        #endregion
     }
+
 }
